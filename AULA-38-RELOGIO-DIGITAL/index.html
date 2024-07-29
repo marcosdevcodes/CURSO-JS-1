@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relogio - Digital</title>
+    <style>
+        body{
+            background-color:#000;
+        }
+        #rel{
+            position:absolute;
+            text-align:center;
+            justify-content: center;
+            color:#0000CD;
+            font-weight:bold;
+            font-size: 30px;
+            display:flex;
+            align-items: center;
+            background-color:	#00FA9A;
+            width:130px;
+            border:3px solid #fff;
+            box-shadow: 10px 20px 10px #00FA9A;
+            border-radius: 8px;
+            padding:12px;
+            outline:none;
+            /*display:none; desaparece o relogio*/
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            cursor:pointer;
+        }
+    </style>
+    <script>
+
+        function relogio(){
+            var data=new Date();
+            var hor=data.getHours();//esse data é o mesmo data de cima que vem do sistema operacional
+            var min=data.getMinutes();
+            var seg=data.getSeconds();
+            
+            //se horas for menor que 10 horas recebe 0 mais o numero horas
+            if(hor<10){
+                hor="0"+hor;
+            }
+            if(min<10){
+                min="0"+min;
+            }
+            if(seg<10){
+                seg="0"+seg;
+            }
+            
+
+            var horas=hor+":"+min+":"+seg;
+
+            document.getElementById("rel").value=horas;//esse document.getElementById vai receber o id que é o rel -> que tem um value que recebe horas
+        }
+        //agora preciso gerencia esse tempo
+        var tempo=setInterval(relogio,1000);//aqui dentro var tempo=setInterval eu chamo a função relogio qu ta la em cima
+
+    </script>
+</head>
+<body>
+    <input type="text" id="rel">
+</body>
+</html>
